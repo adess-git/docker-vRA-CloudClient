@@ -1,0 +1,8 @@
+{
+      "CredentialName": "vCenter",
+      "CredentialId": "ddb6b9a7-dcf0-44e9-ba04-3423f8bdd623",
+      "Description": "",
+      "Id": "b3c55e78-3d21-4a0c-9d7d-c300c19365da",
+      "Name": "cse-vcenter.eng.vmware.com",
+      "PlatformType": 15
+}

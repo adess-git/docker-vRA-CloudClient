@@ -1,0 +1,92 @@
+*  ------------  Version 4.4.0  ---------------
+* + Added the support for deployment action 'Scale In' and 'Scale Out'
+* + Added '--owner' parameter to command 'vra service add' and 'vra service update'
+* + Added two new parameters '--addsharedaccessusers' and '--removesharedaccessusers' to command 'vra businessgroup update'
+* + Added 'vra endpoint import' command
+* + Added 'vra endpoint export' command
+* + Added 'vra endpoint associations' command
+* + Added 'vra endpoint categories' command
+* + Added 'vra endpoint types' command
+* + Removed 'vra endpoint add' command
+* + Removed 'vra endpoint detail' command
+* + Removed 'vra endpoint update' command
+*  ------------  Version 4.3.0  ---------------
+* + Upgraded CloudClient to run on Java 1.8, it will not support Java 1.7 runtime anymore
+* + Added command 'vra entitlement remove' to support removal of entitlement
+* + Modified command 'vra entitlement principal assign' to support assignment of all users in the entitlement
+* + Added more security to truststore management by allowing usage of randomly generated or user chosen truststore password which are then stored in encrypted form
+* + Added 'vra catalogitem service unassign' command.
+* + Bugfixes from bugzilla: 1721021, 1726321, 1741217, 1743172, 1746982, 1747231, 1757403, 1761794
+* + Bugfixes from jira: VRCC-105, VRCC-119, VRCC-124, VRCC-125, VRCC-109, VRCC-17, VRCC-112, VRCC-107
+*  ------------  Version 4.2.0  ---------------
+* + Upgraded CloudClient to support Cafe-SDK version 4256036.
+* + Added 3 Icon commands: 'vra icon add', 'vra icon update' and 'vra icon remove' to support newly created icon APIs in vRA.
+* + Added feature to support vRA, IaaS, vCO and SRM servers deployed on Custom ports.
+* + Added support for automatically adding certificates to cloudclient truststore on first use.
+* + Added support to disable auto completion feature.
+* + Added feature to support DR for XaaS and vCenter deployed VMs.
+* + Added 'vra service update' command.
+* + Added support to login into IaaS server using keyfile.
+* + Added 'vco logout' command.
+* + Improved documentation for configuration parameter of cloudclient and other areas.
+* + More reliable server certification validation communication. This improved the Disaster Recovery reliability.
+* + Pagination support is available in all applicable commands. This improves performance.
+* + Modified command "vra machines unmanaged register" to enable user to add a VM as manageable catalog resource that has a composite blueprint associated with it.
+* + CloudClient artifacts now comply with VMware naming guidelines.
+*  ------------  Version 4.1.0  ---------------
+*  + Added support for actions "Destroy Snapshot", "Revert To Snapshot"
+*  + Added security feature to validate all server certificates (vRealize Automation, IaaS, vRealize Orchestrator and Site Recovery Manager) from the cloudclient before login and making API calls
+*  + Added support for Array Based Replication in SRM Recovery use case
+*  + Added new option '--leasedays' for command 'vra catalog request submit' to allow configuration of lease days
+*  + Added support for logging in using CloudClient.properties if for some reason login using session fails
+*  ------------  Version 4.0.0  ---------------
+*  + Removed the deprecated parameters "addtenantadmins", "addiaasadmins", "removetenantadmins" and "removeiaasadmins" from "vra tenant admin update" command.
+*	 - The command will not throw any exception while trying to remove an admin not present in a list.
+*	 - Eg: Removing m@n.com from TENANT_ADMINS will not throw any error if m@n.com is not a TENANT_ADMIN.
+*  * Renamed "vra iaas blueprint list" command to "vra blueprint list".
+*  * Renamed "vra iaas blueprint detail" command to "vra blueprint detail".
+*  * Renamed "vra iaas blueprint remove" command to "vra blueprint remove".
+*  * Renamed "vra iaas blueprint add vsphere" command to "vra blueprint add vsphere".
+*  * Renamed "vra iaas blueprint vsphere importalltemplates" command to "vra blueprint vsphere importalltemplates".
+*  * Renamed "vra iaas provisioningworkflows list" command to "vra provisioningworkflows list".
+*  + Added two new parameters cpu and memory to "vra catalog request submit" command.
+*  + Added a new command "vra catalog request generate template" to generate a request template.
+*  + Removed command support for multimachine blueprints and catalog items. A single command will now handle the Composite Blueprints.
+*  + Added two new commands "vra catalogitem unassigned list" and "vra catalogitem unassigned detail" to list and detail unassigned catalog items.
+*  + Removed UNASSIGNED from catalog types.
+*  - Removed "vra provisioneditem list" command
+*  - Removed "vra provisioneditem detail" command
+*  + Added "vra provisioneditem list machines" command
+*  + Added "vra provisioneditem list deployments" command
+*  + Added "vra provisioneditem detail machines" command
+*  + Added "vra provisioneditem detail deployments" command
+*  ------------  Version 3.3.0  ---------------
+*  + Provide option "suppress.status.messages" in cloudclient.config to hide all status messages in auto-login mode.
+*  ------------  Version 3.2.0  ---------------
+*  + Provide filtering options for "vra reservation list" command
+*  + Multi-Machine support
+*    - "vra iaas blueprint multimachine list" / detail / remove / vsphere add
+*    - "vra catalog multimachine request submit"
+*    - "vra provisioneditem component list"
+*    - Support actions on multi-machine services (such as add/remove component)
+*  + Add a command to get the vRA version "vra version"
+*  + ASD import/export
+*  + Expose blueprint ID in CI details
+*  + Network Profile support - List and Details
+*  + Allow Configuration to Never Persist Sessions
+*  ------------  Version 3.1.0  ---------------
+*  + Now using generic response formatting for all 'list' and 'detail' commands
+*  + Support session persistence (performance improvement)
+*  + Added paging support for all 'list' commands
+*  + Added BETA support for reservation commands (vRA 6.2+ required)
+*  + Added --businessGroupId filtering for provisioned and catalog items
+*  + Added --requestId filtering for provisioned items
+*  + Can view and assign Approval Admin and Service Architect roles
+*  + Added filtering for tenant admins by role
+*  + Return all IaaS properties from WAPI (including external id for disks, network information, etc.) 
+*  + Can run cloudclient executable from any directory
+*  ------------  Version 3.0.0  ---------------
+*  + Changed all command names to contain prefix "vra" instead of "vcac". vRealize Automation i.e. vRA is the new product name for vCAC.
+*  + Added '--type' parameter to all listing commands to display items that are of particular type.
+*  + Changed all commands that contained keyword "create" to contain keyword "add" instead.
+*  + Changed all commands that contained keyword "delete" to contain keyword "remove" instead.

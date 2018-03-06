@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!-- This should be the same as log4j2.xml in core/src/main/resources-->
+<Configuration monitorInterval="30">
+	<Appenders>
+		<Console name="console" target="SYSTEM_OUT" ignoreExceptions="false">
+			<ThresholdFilter level="OFF" onMatch="ACCEPT"
+				onMismatch="DENY" />
+			<PatternLayout
+				pattern="%d{DEFAULT} cc: [priority=&quot;%p&quot; thread=&quot;%t&quot;] %c.%M:%L - %m%n" />
+		</Console>
+		<RollingFile name="trace-log" fileName="logs/cloudclient-trace.log"
+			filePattern="logs/cloudclient-trace-%d{yyyy-MM-dd}.log" immediateFlush="true" >
+			<!-- ThresholdFilter can be used to control logging at the Appender level -->
+			<!-- The level property can be set to any logging level supported by log4j2.
+				Eg: OFF, DEBUG, WARN etc -->
+			<!-- The onMatch and onMismatch properties work as the name suggests.
+				They'll selectively log messages based on the log level that matches -->
+			<!-- NOTE: The values for these properties are case-sensitive (Upper-case 
+				only) -->
+			<ThresholdFilter level="DEBUG" onMatch="ACCEPT"
+				onMismatch="DENY" />
+			<PatternLayout
+				pattern="%d{DEFAULT} cc: [priority=&quot;%p&quot; thread=&quot;%t&quot;] %c.%M:%L - %m%n" />
+			<Policies>
+				<TimeBasedTriggeringPolicy interval="1"
+					modulate="true" />
+			</Policies>
+			<!-- This strategy will maintain at the most 7 logs at any point in time. 
+				After the threshold is reached, the oldest log will be deleted and the subsequent 
+				logs will be renamed -->
+			<!-- Eg: cloudclient-0.log will be replaced and the previous cloudclient-0.log
+				will be renamed to cloudclient-1.log and so on -->
+			<DefaultRolloverStrategy max="7" />
+		</RollingFile>
+		<RollingFile name="error-log" fileName="logs/cloudclient-error.log"
+			filePattern="logs/cloudclient-error-%d{yyyy-MM-dd}.log" immediateFlush="true" >
+			<ThresholdFilter level="WARN" onMatch="ACCEPT"
+				onMismatch="DENY" />
+			<PatternLayout
+				pattern="%d{DEFAULT} cc: [priority=&quot;%p&quot; thread=&quot;%t&quot;] %c.%M:%L - %m%n" />
+			<Policies>
+				<TimeBasedTriggeringPolicy interval="1"
+					modulate="true" />
+			</Policies>
+			<DefaultRolloverStrategy max="7" />
+		</RollingFile>
+	</Appenders>
+	<Loggers>
+		<Logger name="com.vmware" level="debug" includeLocation="true"
+			additivity="false">
+			<AppenderRef ref="trace-log" level="debug" />
+			<AppenderRef ref="error-log" level="warn" />
+		</Logger>
+		<Logger name="org.springframework" level="info"
+			includeLocation="true" additivity="false">
+			<AppenderRef ref="trace-log" level="info" />
+			<AppenderRef ref="error-log" level="error" />
+		</Logger>
+		<Root level="info" includeLocation="true">
+			<AppenderRef ref="console" />
+			<AppenderRef ref="trace-log" level="warn" />
+			<AppenderRef ref="error-log" level="error" />
+		</Root>
+	</Loggers>
+</Configuration>

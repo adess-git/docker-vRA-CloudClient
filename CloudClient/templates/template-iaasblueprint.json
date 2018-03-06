@@ -1,0 +1,71 @@
+ {
+      "ProvisioningGroupName": null,
+      "ExpireDays": 10,
+      "Disks": [      {
+        "Size": 12,
+        "Label": null,
+        "DriveLetter": null,
+        "ReservationPolicy": null,
+        "ReservationPolicyMode": null,
+        "Properties": [        {
+          "Id": 159,
+          "IsEncrypted": false,
+          "IsRuntime": false,
+          "Name": "IsClone",
+          "UniqueId": "00000000-0000-0000-0000-000000000000",
+          "Value": "true"
+        }]
+      }],
+      "MaxNumberOfDisks": null,
+      "BuildSpecification":       {
+        "$type": "DynamicOps.Api.Model.CloneVirtualBuildSpecification",
+        "CloneFrom": "centos-6.3-i386-appd6-vcac52-agent4",
+        "CustomizationSpecification": null,
+        "CloneReferenceId": "10000000-0000-0000-0000-000000000000",
+        "CpuMin": 1,
+        "MemoryMin": 1024,
+        "StorageMin": 12,
+        "Action": 1,
+        "CpuMax": 2,
+        "MemoryMax": 2048,
+        "StorageMax": 100
+      },
+      "WorkflowName": "CloneWorkflow",
+      "Description": "",
+      "DisplayIconId": "00000000-0000-0000-0000-000000000000",
+      "Id": "934dd8e3-9b9b-489c-bfcd-dd67f2e4657c",
+      "IsAvailableForUse": true,
+      "MaxLeaseDays": 24,
+      "MaximumProvisionedMachinesPerUser": null,
+      "MinLeaseDays": 1,
+      "Name": "tom",
+      "OperatingCost": 0,
+      "Properties": [      {
+        "Id": 158,
+        "IsEncrypted": false,
+        "IsRuntime": false,
+        "Name": "__menusecurity_connectVmrc",
+        "UniqueId": "00000000-0000-0000-0000-000000000000",
+        "Value": "true"
+      }],
+      "MachineType": 0,
+      "PlatformType": 15,
+      "Principals": null,
+      "BuildProfileIds": [],
+      "ProvisioningGroupId": null,
+      "Operations":       {
+        "CanConnectRdp": true,
+        "CanConnectVdi": true,
+        "CanDestroy": true,
+        "CanExpire": true,
+        "CanManageSnapshots": true,
+        "CanPowerOff": true,
+        "CanPowerOn": true,
+        "CanReprovision": true
+      },
+      "DisplayLocationOnRequest": false,
+      "IsGlobal": true,
+      "ReservationPolicyId": null,
+      "LicensingUnit": 1
+    }
+
